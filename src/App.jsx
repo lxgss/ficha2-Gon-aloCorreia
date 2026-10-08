@@ -12,12 +12,18 @@ const cards = [
 function App() {
   const [filter, setFilter] = useState('todas');
   const [search, setSearch] = useState('');
+  const [randomCard, setRandomCard] = useState(null);
 
   const visibleCards = cards.filter((card) => {
     const matchesType = filter === 'todas' || card.type === filter;
     const matchesSearch = card.name.toLowerCase().includes(search.toLowerCase());
     return matchesType && matchesSearch;
   });
+
+  const pickRandomCard = () => {
+    const randomIndex = Math.floor(Math.random() * cards.length);
+    setRandomCard(cards[randomIndex]);
+  };
 
   return (
     <main>
@@ -40,6 +46,19 @@ function App() {
         <button onClick={() => setFilter('feitiço')}>Só feitiços</button>
       </div>
 
+      <div style={{ marginTop: '15px' }}>
+        <button onClick={pickRandomCard}>Carta à sorte</button>
+        {randomCard && (
+          <div>
+            <h3>Carta Sorteada:</h3>
+            <ul>
+              <Card {...randomCard} />
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <h2>Lista de Cartas</h2>
       <ul>
         {visibleCards.map((card) => (
           <Card key={card.name} {...card} />
