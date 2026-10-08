@@ -1,3 +1,6 @@
+
+import Card from './cards.jsx';
+
 // PONTO DE PARTIDA DA AULA 4
 //
 // É exatamente onde o professor acabou o live coding do Bloco 1:
@@ -10,18 +13,26 @@
 //
 // Tarefa 1: substitui este array vazio pelo array cards do teu server
 // (o que fizeste na aula 2).
+
 const cards = [
-  { name: "BIGBANG", type: "Deus", attack: 1000, defense: 1000 },
-  { name: "bruno", type: "Criatura", attack: 2, defense: 2 },
-  { name: "Qiyana", type: "Assassina", attack: 400, defense: 4 },
-  { name: "Briar", type: "Criatura", attack: 5, defense: 7 },
-  { name: "Hwei", type: "Mage", attack: 7, defense: 3 },
+  { name: "jett", type: "Diospiro", attack: 1000, defense: 1000 },
+  { name: "brim", type: "Mirtilo", attack: 2, defense: 2 },
+  { name: "reyna", type: "Pera", attack: 400, defense: 4 },
+  { name: "chamber", type: "Banana", attack: 5, defense: 7 },
+  { name: "sova", type: "Manga", attack: 7, defense: 3 },
 ];
 
 function App() {
   return (
     <main>
-      <h1>A minha coleção</h1>
+      <h1>A minha coleção</h1> 
+
+<ul>
+  {cards.map((card) => (
+    <Card key={card.name} {...card} />
+  ))}
+</ul>
+
     </main>
   );
 }
