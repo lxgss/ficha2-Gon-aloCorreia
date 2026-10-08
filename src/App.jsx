@@ -25,14 +25,14 @@ const cards = [
 function App() {
   return (
     <main>
-      <h1>A minha coleção</h1> 
+      <h1>A minha coleção</h1>
+      <p>Tenho {cards.length} cartas</p>
 
-<ul>
-  {cards.map((card) => (
-    <Card key={card.name} {...card} />
-  ))}
-</ul>
-
+      <ul>
+        {cards.map((card) => (
+          <Card key={card.name} {...card} />
+        ))}
+      </ul>
     </main>
   );
 }
